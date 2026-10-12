@@ -1,0 +1,122 @@
+/* =========================================================
+   Jayden SIM Cards: design tokens and base styles.
+   Black/white foundation, yellow for warnings and emphasis,
+   red reserved for errors and emergencies. Sharp corners.
+   All text pairings below meet WCAG AA (4.5:1) or better.
+   ========================================================= */
+
+:root {
+  --ink: #0b0b0b;
+  --ink-2: #1d1d1b;
+  --ink-3: #2c2c29;
+  --paper: #ffffff;
+  --paper-2: #f3f2ec;
+  --line: #0b0b0b;
+  --line-soft: #d6d4ca;
+  --muted: #55554f;        /* 7.5:1 on paper */
+  --muted-on-ink: #b4b2a8; /* 9:1 on ink */
+
+  --signal: #ffd400;       /* yellow: text on it is always --ink */
+  --signal-soft: #fff6c2;
+  --alert: #d70a00;        /* 5.3:1 on paper */
+  --alert-soft: #fff0ee;
+  --ok: #0b7a34;           /* 5.4:1 on paper */
+  --ok-soft: #ecf7ef;
+
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --radius: 2px;
+  --border: 2px solid var(--line);
+  --shadow-hard: 6px 6px 0 var(--ink);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --gutter: 16px;
+  --max: 1200px;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 32px; }
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 { margin: 0; line-height: 1.1; }
+p { margin: 0; }
+img, svg { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--signal); }
+
+/* Focus: a dark ring plus a yellow halo reads on both light and dark surfaces. */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--signal);
+}
+:focus:not(:focus-visible) { outline: none; }
+
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100px;
+  z-index: 1000;
+  padding: var(--space-3) var(--space-4);
+  background: var(--signal);
+  color: var(--ink);
+  font-weight: 700;
+  border: var(--border);
+}
+.skip-link:focus { top: var(--space-3); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mono { font-family: var(--font-mono); }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

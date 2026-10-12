@@ -1,0 +1,49 @@
+{
+  "name": "jaydensimcards",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
+    "db:dev": "node scripts/dev-db.mts",
+    "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.mts",
+    "auth:generate": "node --env-file-if-exists=.env.local node_modules/auth/dist/index.mjs generate --config src/lib/auth.ts --yes",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@better-auth/infra": "^0.4.14",
+    "@vercel/functions": "^3.9.11",
+    "better-auth": "^1.7.7",
+    "next": "16.4.0",
+    "nodemailer": "^10.0.16",
+    "pg": "^8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@electric-sql/pglite": "^0.5.8",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.19.1",
+    "@types/nodemailer": "^8.0.2",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "auth": "^1.7.7",
+    "eslint": "^10.12.0",
+    "eslint-config-next": "16.4.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.3"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

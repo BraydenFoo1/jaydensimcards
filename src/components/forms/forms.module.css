@@ -1,0 +1,207 @@
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  /* 16px minimum stops iOS Safari zooming into the field on focus. */
+  font-size: 1rem;
+  background: var(--paper);
+  border: var(--border);
+  border-radius: var(--radius);
+  transition: background-color 120ms ease;
+}
+.input:hover { background: var(--paper-2); }
+.input:focus-visible { background: var(--paper); }
+
+.input[aria-invalid="true"] {
+  border-color: var(--alert);
+  box-shadow: inset 4px 0 0 var(--alert);
+}
+
+.withToggle { padding-right: 88px; }
+
+.toggle {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  bottom: 6px;
+  min-width: 72px;
+  padding: 0 var(--space-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.toggle:hover { background: var(--signal); }
+
+.error {
+  display: flex;
+  gap: var(--space-2);
+  color: var(--alert);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.error::before {
+  content: "!";
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.1em;
+  background: var(--alert);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
+.checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  align-items: start;
+  font-size: 0.95rem;
+}
+.checkbox input {
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  accent-color: var(--ink);
+}
+
+/* ---------- buttons ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 52px;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--signal);
+  font-weight: 800;
+  font-stretch: 110%;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.button:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--signal), 4px 4px 0 2px var(--ink);
+}
+.button:disabled { cursor: progress; opacity: 0.8; }
+
+.secondary {
+  background: var(--paper);
+  color: var(--ink);
+}
+.secondary:hover:not(:disabled) { background: var(--signal); }
+
+.block { width: 100%; }
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- notices ---------- */
+
+.notice {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: var(--border);
+  border-left-width: 8px;
+  background: var(--paper-2);
+}
+.notice:focus-visible { box-shadow: 0 0 0 5px var(--signal); }
+.notice p + p { margin-top: var(--space-1); }
+.noticeTitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.noticeError { border-color: var(--alert); background: var(--alert-soft); }
+.noticeError .noticeTitle { color: var(--alert); }
+.noticeSuccess { border-color: var(--ok); background: var(--ok-soft); }
+.noticeSuccess .noticeTitle { color: var(--ok); }
+.noticeInfo { border-color: var(--ink); background: var(--signal-soft); }
+
+.summaryList {
+  margin: 0;
+  padding-left: 1.2em;
+}
+.summaryList a { color: var(--alert); font-weight: 600; }
+
+/* ---------- loading skeleton ---------- */
+
+.skeleton {
+  display: grid;
+  gap: var(--space-5);
+}
+.skeletonBar {
+  height: 48px;
+  background: linear-gradient(90deg, var(--paper-2) 0%, #e8e6dd 50%, var(--paper-2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+.skeletonLabel { width: 30%; height: 14px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  font-size: 0.95rem;
+}
+.links a { font-weight: 600; }

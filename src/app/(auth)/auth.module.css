@@ -1,0 +1,234 @@
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  background:
+    linear-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 100% 32px,
+    var(--paper-2);
+}
+
+/* ---------- top bar ---------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--gutter);
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: 4px solid var(--signal);
+}
+
+.brand {
+  text-decoration: none;
+  min-width: 0;
+}
+
+.barMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tag {
+  display: none;
+  color: var(--muted-on-ink);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--paper);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .tag { display: inline; }
+}
+
+@media (max-width: 420px) {
+  .backLong { display: none; }
+}
+
+/* ---------- main ---------- */
+
+.main {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--space-5) var(--gutter) var(--space-7);
+  display: grid;
+  gap: var(--space-6);
+  align-content: start;
+}
+
+.panel {
+  min-width: 0;
+  background: var(--paper);
+  border: var(--border);
+  box-shadow: var(--shadow-hard);
+  padding: var(--space-5) var(--space-4);
+}
+
+@media (min-width: 600px) {
+  .panel { padding: var(--space-7) var(--space-7); }
+  .main { padding-top: var(--space-7); }
+}
+
+@media (min-width: 960px) {
+  .main {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: start;
+    padding-block: var(--space-8);
+  }
+  .status { order: -1; position: sticky; top: var(--space-5); }
+}
+
+/* ---------- status console ---------- */
+
+.status {
+  min-width: 0;
+  background: var(--ink);
+  color: var(--paper);
+  border: var(--border);
+  padding: 0 var(--space-5) var(--space-5);
+  display: grid;
+  gap: var(--space-5);
+}
+
+.status::before {
+  content: "";
+  height: 12px;
+  margin: 0 calc(var(--space-5) * -1);
+  background: repeating-linear-gradient(-45deg, var(--signal) 0 12px, var(--ink) 12px 24px);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.statusTitle {
+  margin-top: var(--space-2);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 900;
+  font-stretch: 75%;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.statusLede {
+  margin-top: var(--space-3);
+  color: var(--muted-on-ink);
+}
+
+.readout {
+  margin: 0;
+  border-top: 1px solid var(--ink-3);
+}
+
+.readout > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px dashed #45453f;
+}
+
+.readout dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-on-ink);
+}
+
+.readout dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.warn { color: var(--signal); }
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: var(--space-2);
+  background: var(--signal);
+  border-radius: 50%;
+  vertical-align: 1px;
+  animation: blink 1.4s steps(2, start) infinite;
+}
+@keyframes blink { 50% { opacity: 0.15; } }
+
+.assure {
+  padding: var(--space-4);
+  border: 2px solid var(--signal);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.assure strong { color: var(--signal); }
+
+/* ---------- page heading (used by each auth page) ---------- */
+
+.heading {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.eyebrow {
+  justify-self: start;
+  padding: var(--space-1) var(--space-2);
+  background: var(--ink);
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.1rem, 7vw, 3.2rem);
+  font-weight: 900;
+  font-stretch: 78%;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.lede {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+.stack {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.email {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}

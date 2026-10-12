@@ -1,0 +1,39 @@
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+}
+
+.light { color: var(--paper); }
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  background: var(--signal);
+  color: var(--ink);
+  border: 2px solid currentColor;
+}
+.light .badge { border-color: var(--signal); }
+
+.tower { width: 24px; height: 24px; }
+
+.text {
+  font-weight: 800;
+  font-stretch: 112%;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.text em {
+  font-style: normal;
+  background: var(--ink);
+  color: var(--signal);
+  padding: 0 0.25em;
+  margin: 0 0.05em;
+}
+.light .text em { background: var(--signal); color: var(--ink); }

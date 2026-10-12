@@ -1,0 +1,212 @@
+/* The homepage pricing table: the original plan cards in the site's ink-and-signal style. */
+
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--space-7) var(--gutter) var(--space-8);
+  display: grid;
+  gap: var(--space-6);
+  scroll-margin-top: var(--space-5);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 46rem;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  font-weight: 900;
+  font-stretch: 110%;
+  letter-spacing: -0.01em;
+}
+
+.lede {
+  max-width: 40rem;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid > li {
+  display: flex;
+  min-width: 0;
+}
+
+/* ---------- card ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  background: var(--paper);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+}
+
+.flag {
+  padding: var(--space-2) var(--space-4);
+  border-bottom: var(--border);
+  background: var(--ink);
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.top {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+}
+
+.bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+}
+.bars span { width: 6px; background: var(--line-soft); }
+.bars span:nth-child(1) { height: 25%; }
+.bars span:nth-child(2) { height: 50%; }
+.bars span:nth-child(3) { height: 75%; }
+.bars span:nth-child(4) { height: 100%; }
+.bars .barOn { background: var(--ink); }
+
+.kicker {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-stretch: 110%;
+  overflow-wrap: anywhere;
+}
+
+.pitch { color: var(--muted); }
+
+.price {
+  margin-top: var(--space-2);
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.cur { margin-right: 2px; font-size: 0.5em; vertical-align: 0.6em; }
+.cents { font-size: 0.5em; }
+.per { margin-left: 4px; color: var(--muted); font-size: 0.4em; font-weight: 700; letter-spacing: 0; }
+
+.cta { margin-top: var(--space-2); }
+
+.spec {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  margin: 0;
+  padding: var(--space-3) var(--space-5) var(--space-5);
+  border-top: var(--border);
+}
+
+.spec > div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.spec > div:last-child { border-bottom: 0; }
+
+.spec dt {
+  padding-top: 2px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.spec dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}
+
+.footnote {
+  max-width: 60rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+/* ---------- variants ---------- */
+
+/* I'm Broke */
+.danger {
+  border-color: var(--alert);
+  box-shadow: 6px 6px 0 var(--alert);
+}
+.danger .kicker { color: var(--alert); }
+.danger .spec { border-top-color: var(--alert); }
+
+/* The Ultra Jayden 5G */
+.hero { background: var(--signal); }
+.hero .kicker,
+.hero .pitch,
+.hero .per,
+.hero .spec dt { color: var(--ink); }
+.hero .bars span { background: rgb(11 11 11 / 0.25); }
+.hero .bars .barOn { background: var(--ink); }
+.hero .spec > div { border-bottom-color: rgb(11 11 11 / 0.2); }
+
+/* The Tuffest Plan: gold on ink. */
+.tuffest {
+  --gold: #e3b341; /* 10:1 on --ink */
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--gold);
+  box-shadow: 6px 6px 0 var(--gold);
+}
+.tuffest .flag {
+  background: var(--gold);
+  color: var(--ink);
+  border-bottom-color: var(--gold);
+}
+.tuffest .kicker,
+.tuffest .pitch,
+.tuffest .per,
+.tuffest .spec dt { color: var(--muted-on-ink); }
+.tuffest .bars span { background: var(--ink-3); }
+.tuffest .bars .barOn { background: var(--gold); }
+.tuffest .spec { border-top-color: var(--gold); }
+.tuffest .spec > div { border-bottom-color: var(--ink-3); }
+
+.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
