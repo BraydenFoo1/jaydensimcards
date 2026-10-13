@@ -20,6 +20,9 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: { default: "Jayden SIM Cards", template: "%s | Jayden SIM Cards" },
   description: "A fictional parody mobile network. Jayden is the network.",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export const viewport: Viewport = {
